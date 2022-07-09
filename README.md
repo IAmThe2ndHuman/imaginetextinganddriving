@@ -24,7 +24,8 @@ crossentropy is used for the loss function since it's best suited for multi-clas
 ### Training the model
 1. [Follow this guide to install Tensorflow on the Jetson Nano](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html)
 2. [Download the dataset here](https://drive.google.com/file/d/1LJQSB9yx0qGXZS0NUrPvpJCI2wh6FPtC/view?usp=sharing) and place it in the root directory of this project.
-3. Run `python3 train.py` and wait for training to complete.
+3. Run `pip3 install pillow`
+4. Run `python3 train.py` and wait for training to complete.
 
 ### Picking the best model
 The script `train.py` will create a new model and store it in `checkpoints/` after every epoch and 
@@ -45,9 +46,10 @@ An interesting application of this model is to detect whether a taxi driver is t
 ensure the safety of passengers. Taxi services could attach a camera facing the driver which periodically takes
 a photo and sends it to a server where the model can detect whether the driver is texting or not. This simple
 web server made with FastAPI is a demo if this concept.
-1. Run `pip install fastapi uvicorn`.
+1. Run `pip3 install fastapi uvicorn`.
 2. Edit the `model_path` variable to point to the model you want to use, just like you did with `test.py`.
 3. Run `uvicorn server:app`.
 4. You will see the line `Uvicorn running on <url> (Press CTRL+C to quit)` in the terminal. Visit the url in your browser.
 
-[View a video explanation here](video link)
+### Help
+View a video explanation of `test.py` [here](https://youtu.be/i0EUbhReMcE).
