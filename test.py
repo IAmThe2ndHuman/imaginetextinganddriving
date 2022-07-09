@@ -11,7 +11,7 @@ width = 256
 
 classes = ["normal", "phonecall_left", "phonecall_right", "phonehold_left", "phonehold_right"]
 
-class_to_test = classes[0]
+class_to_test = classes[0]  # EDIT THIS
 model_path = "modelex.h5"  # EDIT THIS
 
 device = tf.config.list_physical_devices('GPU')
