@@ -1,3 +1,5 @@
+import platform
+
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -6,6 +8,10 @@ from tensorflow.keras import layers
 image_size = (256, 256)
 batch_size = 32
 
+device = tf.config.list_physical_devices('GPU')
+if platform.processor() == "aarch64" and device:
+    tf.config.experimental.set_memory_growth(device[0], True)
+    tf.config.experimental.set_virtual_device_configuration(device[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024)])
 
 # load images
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(

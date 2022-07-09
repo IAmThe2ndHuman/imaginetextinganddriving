@@ -1,7 +1,14 @@
+import platform
+
 import numpy as np
 import tensorflow as tf
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+
+device = tf.config.list_physical_devices('GPU')
+if platform.processor() == "aarch64" and device:
+    tf.config.experimental.set_memory_growth(device[0], True)
+    tf.config.experimental.set_virtual_device_configuration(device[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024)])
 
 app = FastAPI()
 model_path = "modelex.h5"  # EDIT THIS

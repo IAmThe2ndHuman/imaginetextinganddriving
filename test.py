@@ -1,6 +1,7 @@
 """This file iterates through the test data and shows what percentage the model predicted correctly."""
 
 import os
+import platform
 
 import numpy as np
 import tensorflow as tf
@@ -13,13 +14,18 @@ classes = ["normal", "phonecall_left", "phonecall_right", "phonehold_left", "pho
 class_to_test = classes[0]
 model_path = "modelex.h5"  # EDIT THIS
 
+device = tf.config.list_physical_devices('GPU')
+if platform.processor() == "aarch64" and device:
+    tf.config.experimental.set_memory_growth(device[0], True)
+    tf.config.experimental.set_virtual_device_configuration(device[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024)])
+
 model = tf.keras.models.load_model(model_path)
 
 # load images
 images = os.listdir(f"data/test/{class_to_test}/")
 correct = 0
 for image in images:
-    # print(image)
+    print(image)
     img = tf.keras.utils.load_img(
         f"data/test/{class_to_test}/{image}", target_size=(height, width),
         # grayscale=True
