@@ -45,7 +45,7 @@ different class in the test dataset. Remember to also edit the `model_path` vari
 An interesting application of this model is to detect whether a taxi driver is texting while driving or not to 
 ensure the safety of passengers. Taxi services could attach a camera facing the driver which periodically takes
 a photo and sends it to a server where the model can detect whether the driver is texting or not. This simple
-web server made with FastAPI is a demo if this concept.
+web server made with FastAPI is a demo of this concept.
 1. Run `pip3 install fastapi uvicorn`.
 2. Edit the `model_path` variable to point to the model you want to use, just like you did with `test.py`.
 3. Run `uvicorn server:app`.
